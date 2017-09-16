@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="ning">
+    <!--<link rel="icon" href="../../favicon.ico">-->
+
+    <title>豆瓣电影</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./css/dashboard.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="myApp">
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">豆瓣 电影</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right hidden-md hidden-lg hidden-sm">
+                <li><a href="#!/in_theaters">正在热映</a></li>
+                <li><a href="#!/coming_soon">即将上映</a></li>
+                <li><a href="#!/top250">Top 250</a></li>
+            </ul>
+            <form class="navbar-form navbar-right" ng-controller="search" ng-submit="search_sub()">
+                <input type="text" class="form-control" placeholder="搜索..." ng-model="text">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar" ng-controller="class_focus">
+                <li ng-class="{active:$location.path().substr(0,2)=='/i'}"><a href="#!/in_theaters">正在热映<span
+                        class="sr-only">(current)</span></a></li>
+                <li ng-class="{active:$location.path().substr(0,2)=='/c'}"><a href="#!/coming_soon">即将上映</a></li>
+                <li ng-class="{active:$location.path().substr(0,2)=='/t'}"><a href="#!/top250">Top 250</a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive" ng-view></div>
+    </div>
+</div>
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="./lib/jquery/jquery-3.2.1.min.js"></script>
+<script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+<script src="./lib/angular/angular.min.js"></script>
+<script src="./lib/angular/angular-route.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="./js/ie10-viewport-bug-workaround.js"></script>
+<script src="./js/app.js"></script>
+<script src="./js/app-service.js"></script>
+<script src="./js/app-controller.js"></script>
+
+<script id="template" type="text/ng-template">
+    <table class="table table-hover">
+        <tr ng-repeat="subject in subjects_data">
+            <td class="col-md-1"><img class="img-rounded img_size"
+                                      ng-src={{subject.img}}/>
+            </td>
+            <td class="col-md-10"><h1 class="title">
+                片名：{{subject.title}}{{subject.original_title!==subject.title?'('+subject.original_title+')':''}}</h1>
+                <p>导演：{{subject.directors}}</p>
+                <p>主演：{{subject.casts}}</p>
+                <p>年代：{{subject.year}}</p>
+                <p>类型：{{subject.genres}}</p>
+                <p>看过人数：{{subject.collect_count}}</p>
+            </td>
+            <td class="col-md-1"><p class="average_p">{{subject.average | number:1}}</p></td>
+        </tr>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination pagination-lg">
+            <li>
+                <a ng-href="#!{{location}}/{{last}}" aria-label="Previous">
+                    <span aria-hidden="true">上一页</span>
+                </a>
+            </li>
+            <li ng-class={active:1==1}><span aria-hidden="true">第{{page}}/{{total}}页</span></li>
+            <li>
+                <a ng-href="#!{{location}}/{{next}}" aria-label="Next">
+                    <span aria-hidden="true">下一页</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</script>
+
+
+
+</body>
+</html>
