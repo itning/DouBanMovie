@@ -26,7 +26,7 @@ services.service('MainService', [function () {
         for (var i = 0; i < genres.length; i++) {
             ret += genres[i];
             if (i < genres.length - 1) {
-                ret += '，';
+                ret += ',';
             }
         }
         return ret;
@@ -40,7 +40,7 @@ services.service('MainService', [function () {
         for (var i = 0; i < array.length; i++) {
             ret += array[i].name;
             if (i < array.length - 1) {
-                ret += '，';
+                ret += ',';
             }
         }
         return ret;

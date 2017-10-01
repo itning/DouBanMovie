@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
+    <meta charset="GB2312">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- ä¸Šè¿°3ä¸ªmetaæ ‡ç­¾*å¿…é¡»*æ”¾åœ¨æœ€å‰é¢ï¼Œä»»ä½•å…¶ä»–å†…å®¹éƒ½*å¿…é¡»*è·Ÿéšå…¶åï¼ -->
+    <!-- ÉÏÊö3¸ömeta±êÇ©*±ØĞë*·ÅÔÚ×îÇ°Ãæ£¬ÈÎºÎÆäËûÄÚÈİ¶¼*±ØĞë*¸úËæÆäºó£¡ -->
     <meta name="description" content="">
     <meta name="author" content="ning">
     <!--<link rel="icon" href="../../favicon.ico">-->
 
-    <title>è±†ç“£ç”µå½±</title>
+    <title>¶¹°êµçÓ°</title>
 
     <!-- Bootstrap core CSS -->
     <link href="./lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -39,16 +39,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">è±†ç“£ ç”µå½±</a>
+            <a class="navbar-brand" href="#">¶¹°ê µçÓ°</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right hidden-md hidden-lg hidden-sm">
-                <li><a href="#!/in_theaters">æ­£åœ¨çƒ­æ˜ </a></li>
-                <li><a href="#!/coming_soon">å³å°†ä¸Šæ˜ </a></li>
+                <li><a href="#!/in_theaters">ÕıÔÚÈÈÓ³</a></li>
+                <li><a href="#!/coming_soon">¼´½«ÉÏÓ³</a></li>
                 <li><a href="#!/top250">Top 250</a></li>
+                <li><p style="color: #d43f3a">µã»÷µçÓ°Í¼Æ¬½øĞĞ²éÑ¯ÏÂÔØ</p></li>
             </ul>
             <form class="navbar-form navbar-right" ng-controller="search" ng-submit="search_sub()">
-                <input type="text" class="form-control" placeholder="æœç´¢..." ng-model="text">
+                <input type="text" class="form-control" placeholder="ËÑË÷..." ng-model="text">
             </form>
         </div>
     </div>
@@ -58,10 +59,11 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar" ng-controller="class_focus">
-                <li ng-class="{active:$location.path().substr(0,2)=='/i'}"><a href="#!/in_theaters">æ­£åœ¨çƒ­æ˜ <span
+                <li ng-class="{active:$location.path().substr(0,2)=='/i'}"><a href="#!/in_theaters">ÕıÔÚÈÈÓ³<span
                         class="sr-only">(current)</span></a></li>
-                <li ng-class="{active:$location.path().substr(0,2)=='/c'}"><a href="#!/coming_soon">å³å°†ä¸Šæ˜ </a></li>
+                <li ng-class="{active:$location.path().substr(0,2)=='/c'}"><a href="#!/coming_soon">¼´½«ÉÏÓ³</a></li>
                 <li ng-class="{active:$location.path().substr(0,2)=='/t'}"><a href="#!/top250">Top 250</a></li>
+                <li><p style="color: #d43f3a">µã»÷µçÓ°Í¼Æ¬½øĞĞ²éÑ¯ÏÂÔØ</p></li>
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main table-responsive" ng-view></div>
@@ -82,16 +84,16 @@
 <script id="template" type="text/ng-template">
     <table class="table table-hover">
         <tr ng-repeat="subject in subjects_data">
-            <td class="col-md-1"><img class="img-rounded img_size"
-                                      ng-src={{subject.img}}/>
+            <td class="col-md-1"><a ng-href="{{'//s.dydytt.net/plus/so.php?kwtype=0&searchtype=title&keyword='+subject.title}}" target="_blank"><img class="img-rounded img_size"
+                                      ng-src={{subject.img}}/></a>
             </td>
             <td class="col-md-10"><h1 class="title">
-                ç‰‡åï¼š{{subject.title}}{{subject.original_title!==subject.title?'('+subject.original_title+')':''}}</h1>
-                <p>å¯¼æ¼”ï¼š{{subject.directors}}</p>
-                <p>ä¸»æ¼”ï¼š{{subject.casts}}</p>
-                <p>å¹´ä»£ï¼š{{subject.year}}</p>
-                <p>ç±»å‹ï¼š{{subject.genres}}</p>
-                <p>çœ‹è¿‡äººæ•°ï¼š{{subject.collect_count}}</p>
+                Æ¬Ãû£º{{subject.title}}{{subject.original_title!==subject.title?'('+subject.original_title+')':''}}</h1>
+                <p>µ¼Ñİ£º{{subject.directors}}</p>
+                <p>Ö÷Ñİ£º{{subject.casts}}</p>
+                <p>Äê´ú£º{{subject.year}}</p>
+                <p>ÀàĞÍ£º{{subject.genres}}</p>
+                <p>¿´¹ıÈËÊı£º{{subject.collect_count}}</p>
             </td>
             <td class="col-md-1"><p class="average_p">{{subject.average | number:1}}</p></td>
         </tr>
@@ -100,20 +102,17 @@
         <ul class="pagination pagination-lg">
             <li>
                 <a ng-href="#!{{location}}/{{last}}" aria-label="Previous">
-                    <span aria-hidden="true">ä¸Šä¸€é¡µ</span>
+                    <span aria-hidden="true">ÉÏÒ»Ò³</span>
                 </a>
             </li>
-            <li ng-class={active:1==1}><span aria-hidden="true">ç¬¬{{page}}/{{total}}é¡µ</span></li>
+            <li ng-class={active:1==1}><span aria-hidden="true">µÚ{{page}}/{{total}}Ò³</span></li>
             <li>
                 <a ng-href="#!{{location}}/{{next}}" aria-label="Next">
-                    <span aria-hidden="true">ä¸‹ä¸€é¡µ</span>
+                    <span aria-hidden="true">ÏÂÒ»Ò³</span>
                 </a>
             </li>
         </ul>
     </nav>
 </script>
-
-
-
 </body>
 </html>
