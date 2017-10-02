@@ -57,7 +57,8 @@ services.service('MainService', [function () {
             directors: Arrayformat(subject.directors),
             casts: Arrayformat(subject.casts),
             genres: Getgenres(subject.genres),
-            img: subject.images.large
+            img: subject.images.large,
+            alt:subject.alt
         });
     };
 
