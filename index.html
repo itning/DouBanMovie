@@ -82,7 +82,8 @@
 <script id="template" type="text/ng-template">
     <table class="table table-hover">
         <tr data-ng-repeat="subject in subjects_data">
-            <td class="col-md-1"><a href="{{subject.alt}}" target="_blank"><img class="img-rounded img_size" data-ng-src={{subject.img}}/></a>
+            <td class="col-md-1"><a href="{{subject.alt}}" title="{{'点击访问豆瓣页面：'+subject.title}}" target="_blank"><img
+                    class="img-rounded img_size" data-ng-src={{subject.img}}/></a>
                 <p style="margin: 1em 0 0 0;color: #d43f3a;" class="text-center">下载本电影：</p>
             </td>
             <td class="col-md-10"><h1 class="title">
@@ -109,7 +110,8 @@
                     <input type="hidden" name="tbname" value="article"/>
                     <input type="hidden" name="show" value="title,smalltext"/>
                     <input type="hidden" name="keyboard" value="{{subject.title}}">
-                    <input style="width: 33%;margin-left: 1px" type=submit class="form-control pull-left btn-primary" value="通过电影港搜索下载"/>
+                    <input style="width: 33%;margin-left: 1px" type=submit class="form-control pull-left btn-primary"
+                           value="通过电影港搜索下载"/>
                 </form>
             </td>
             <td class="col-md-1"><p class="average_p">{{subject.average | number:1}}</p></td>
