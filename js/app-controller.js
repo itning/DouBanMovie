@@ -79,7 +79,7 @@ controllers.controller('search', ['$scope', 'MainService', 'HttpService', '$rout
     $scope.subjects_data = [];
 
     $scope.text = "";
-    var text = $routeParams['text'];
+    var text = GB2312UTF8.GB2312ToUTF8($routeParams['text']);
     var count = 10;
     var page = $routeParams['page'] ? $routeParams['page'] : 1;
     var page_num = parseInt(page);
