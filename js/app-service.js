@@ -47,6 +47,9 @@ services.service('MainService', [function () {
     }
 
     this.pushArray = function (array, subject) {
+        let parser = document.createElement('a');
+        parser.href = subject.images.large;
+        subject.images.large = "http://img3.doubanio.com" + parser.pathname;
         array.push({
             id: subject.id,
             title: subject.title,
@@ -58,7 +61,7 @@ services.service('MainService', [function () {
             casts: Arrayformat(subject.casts),
             genres: Getgenres(subject.genres),
             img: subject.images.large,
-            alt:subject.alt
+            alt: subject.alt
         });
     };
 
