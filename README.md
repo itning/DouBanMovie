@@ -15,3 +15,7 @@
 	1.JQuery
 	2.Bootstrap
 	3.AngularJS
+
+**预览：**
+![](https://github.com/itning/DouBanMovie/blob/master/pic/a.png)
+![](https://github.com/itning/DouBanMovie/blob/master/pic/b.png)
